@@ -30,6 +30,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     private void initData() {
         mHelp = DbHelp.get_Instance(mContext);
+        SQLiteDatabase.loadLibs(this);
     }
 
     private void initView() {
@@ -58,17 +59,17 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 SQLiteDatabase database1 = mHelp.getReadableDatabase(DbHelp.PASSWORD);
                 Cursor query = database1.query(DbHelp.DBTABLENAMEONE, null, null, null, null,
                         null, null);
-                int id = getInteger(query, "id");
-                String name = getString(query, "name");
-                int age = getInteger(query, "age");
-                int sex = getInteger(query, "sex");
-                String phone = getString(query, "phone");
                 StringBuffer buffer = new StringBuffer();
-                buffer.append(id);
-                buffer.append(name);
-                buffer.append(age);
-                buffer.append(sex);
-                buffer.append(phone);
+                while (query.moveToNext()) {
+                    String name = getString(query, "name");
+                    int age = getInteger(query, "age");
+                    int sex = getInteger(query, "sex");
+                    String phone = getString(query, "phone");
+                    buffer.append(name);
+                    buffer.append(age);
+                    buffer.append(sex);
+                    buffer.append(phone);
+                }
                 mTvContent.setText(buffer.toString());
                 break;
         }
