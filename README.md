@@ -38,7 +38,7 @@
                      }
 ```
 * 数据搜索类
-```
+```java
 public class DbQueryUtil {
     private volatile static DbQueryUtil _instance;
 
