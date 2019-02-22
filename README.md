@@ -113,7 +113,7 @@ public class DbQueryUtil {
 ```
 ![图片](https://github.com/yufeilong92/sqlcipher/blob/master/gif/gifa.gif)
 * 滚动类
-```asm 
+```java
 public class TextSwitCherAnimation {
 
     private AnimationSet InAnimationSet;
