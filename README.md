@@ -114,6 +114,21 @@ public class DbQueryUtil {
 ![图片](https://github.com/yufeilong92/sqlcipher/blob/master/gif/gifa.gif)
 * 滚动类
 ```java
+    tvswt.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                return new TextView(Main5Activity.this);
+            }
+        });
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add("循环说据" + i);
+        }
+        TextSwitCherAnimation switCherAnimation = new TextSwitCherAnimation(tvswt, list);
+        switCherAnimation.setDelayTime(500);
+        switCherAnimation.create();
+```
+```java
 public class TextSwitCherAnimation {
 
     private AnimationSet InAnimationSet;
