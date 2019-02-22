@@ -9,7 +9,6 @@ import net.sqlcipher.database.SQLiteOpenHelper;
  * @version V 1.0 xxxxxxxx
  * @Title: MyApplication
  * @Package com.example.myapplication
- * @Description: todo
  * @author: L-BackPacker
  * @date: 2019.02.12 下午 5:37
  * @verdescript 版本号 修改时间  修改人 修改的概要说明
