@@ -18,6 +18,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     private TextView mTvContent;
     private Context mContext;
     private DbHelp mHelp;
+    private TextView mTvContent1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     private void initData() {
         mHelp = DbHelp.get_Instance(mContext);
-        SQLiteDatabase.loadLibs(this);
     }
 
     private void initView() {
@@ -41,6 +41,8 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
         mBtnContent.setOnClickListener(this);
         mBtnQuery.setOnClickListener(this);
+        mTvContent1 = (TextView) findViewById(R.id.tv_content1);
+        mTvContent1.setOnClickListener(this);
     }
 
     @Override
@@ -70,7 +72,22 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                     buffer.append(sex);
                     buffer.append(phone);
                 }
+                query.close();
+                Cursor query1 = database1.query(DbHelp.DBTABLENAMEONE, null, null, null, null,
+                        null, null);
+                StringBuffer buffer1 = new StringBuffer();
+                while (query1.moveToNext()) {
+                    String name = getString(query1, "name");
+                    int age = getInteger(query1, "age");
+                    int sex = getInteger(query1, "sex");
+                    String phone = getString(query1, "phone");
+                    buffer1.append(name);
+                    buffer1.append(age);
+                    buffer1.append(sex);
+                    buffer1.append(phone);
+                }
                 mTvContent.setText(buffer.toString());
+                mTvContent1.setText(buffer1.toString());
                 break;
         }
     }

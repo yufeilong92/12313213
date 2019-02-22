@@ -71,9 +71,18 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
                 long l = System.currentTimeMillis();
                 mTvStartTime.setText(String.valueOf(l));
                 database.beginTransaction();
-                for (int i = 0; i < 30000; i++) {
+                for (int i = 0; i < 100; i++) {
                     ContentValues values = new ContentValues();
-                    values.put("name", "小明");
+                    values.put("name", "小明"+i);
+                    values.put("age", i);
+                    values.put("id2", i);
+                    values.put("sex", i);
+                    values.put("phone", "18317837561");
+                    database.insert(DbHelpManger.TANLENAME, null, values);
+                }
+                for (int i = 0; i < 100; i++) {
+                    ContentValues values = new ContentValues();
+                    values.put("name", "小明"+i);
                     values.put("age", i);
                     values.put("id2", i);
                     values.put("sex", i);
@@ -119,7 +128,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
 //                        buffer.append(string + "/");
 //                    }
 //                }
-                Cursor query = database.query(DbHelpManger.TANLENAME, null, "id2 in(1,2,3,4,5) and sex in(1,5,8,2,3)", null, null, null, null);
+                Cursor query = database.query(DbHelpManger.TANLENAME, null, "id2 in(1,2,3,4,5) and sex in(1,1,1,1,1)", null, null, null, null);
                 while (query.moveToNext()){
                     String string = getString(query, "name");
                     buffer.append(string + "/");
